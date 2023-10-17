@@ -1,16 +1,12 @@
 const express=require("express")
+const connectdb = require("./configuration/config")
+const routerProduct=require("./router/productRouter")
 //require==import
 const app=express()
 const port=700
 app.use(express.json())
-app.get("/manel",(req,res)=>{
-res.send("hello")
-})
-app.get("/manelpost/:x/:y",(req,res)=>{
-    const result=(+req.params.x)+(+req.params.y)
-    res.send({result})
-})
-
+app.use("/product",routerProduct)
+connectdb()
 
 
 
