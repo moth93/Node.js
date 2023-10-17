@@ -5,4 +5,5 @@ routerProduct.post("/add",addProduct)
 routerProduct.delete("/delete/:id",delProduct)
 routerProduct.get("/get",getProduct)
 routerProduct.put("/update/:id",updateProduct)
+//here we define for each module we define the function and path 
 module.exports=routerProduct

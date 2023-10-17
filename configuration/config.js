@@ -9,3 +9,4 @@ const connectdb=async()=>{
     }
 }
 module.exports=connectdb
+//creating a DB called "Store2"

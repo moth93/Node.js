@@ -6,4 +6,6 @@ const productSchema=new mongoose.Schema({
     image:String,
     rating:Number
 })
+//createing the schema for the data to get
 module.exports=mongoose.model("products",productSchema)
+//creating the collection called "products" in the 
