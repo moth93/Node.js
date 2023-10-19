@@ -4,27 +4,47 @@ import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import { useDispatch } from 'react-redux';
 import { addProduct } from '../redux/action/Action';
+import axios from 'axios';
 
 
 function AddProduct() {
   const [show, setShow] = useState(false);
   const [name, setname] = useState("");
-  const [image, setimage] = useState('');
+  const [image, setimage] = useState([]);
   const [price, setprice] = useState(0);
   const [rating, setrating] = useState(0);
   const [description, setdescription] = useState('');
-const data={name,image,price,rating,description}
+
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 const dispatch=useDispatch()
-const add=()=>{
-    dispatch(addProduct(data))
+const formaData1=new FormData()
+formaData1.append('file',name)
+
+
+
+const add=async()=>{
+  const formaData=new FormData()
+  formaData.append('file',image)
+  formaData.append('upload_preset','ml_default')
+  console.log(formaData)
+ if(image.length===undefined){
+  await axios.post('https://api.cloudinary.com/v1_1/ducysfqbh/upload',formaData).then((res)=>
+  { 
+    console.log(res)
+    const data={name,image:res.data.url,price,rating,description}
+    dispatch(addProduct(data))})}
+ 
+
+    
+    
     handleClose()
+
 }
   return (
     <>
       <Button variant="primary" onClick={handleShow}>
-        Launch demo modal
+       Add product
       </Button>
 
       <Modal show={show} onHide={handleClose}>
@@ -43,9 +63,10 @@ const add=()=>{
               />
               <Form.Label>image</Form.Label>
               <Form.Control
-                type="text"
+                type="file"
+                accept='image/*,.mp4'
                 placeholder="name@example.com"
-                onChange={(e)=>setimage(e.target.value)}
+                onChange={(e)=>setimage(e.target.files[0])}
 
                 autoFocus
               />

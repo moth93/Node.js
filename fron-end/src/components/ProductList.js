@@ -13,7 +13,7 @@ function ProductList() {
     }
   ,[dispatch])
  const products=useSelector(state=>state)
-console.log(products)
+
 
   return (
 
