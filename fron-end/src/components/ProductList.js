@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getProduct } from '../redux/action/Action'
 import ProdcutCard from './ProdcutCard'
+import { getcurrent } from '../redux/action/ActionUser'
 
 
 function ProductList() {
@@ -10,11 +11,12 @@ function ProductList() {
   useEffect(
     ()=>{
     dispatch(getProduct())
+    dispatch(getcurrent())
     }
   ,[dispatch])
- const products=useSelector(state=>state)
-
-
+ const products=useSelector(state=>state.reducerProduct)
+const user=useSelector(state=>state.reducerUser.user)
+console.log(user)
   return (
 
     <div>

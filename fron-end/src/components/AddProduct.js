@@ -6,7 +6,6 @@ import { useDispatch } from 'react-redux';
 import { addProduct } from '../redux/action/Action';
 import axios from 'axios';
 
-
 function AddProduct() {
   const [show, setShow] = useState(false);
   const [name, setname] = useState("");
@@ -14,14 +13,12 @@ function AddProduct() {
   const [price, setprice] = useState(0);
   const [rating, setrating] = useState(0);
   const [description, setdescription] = useState('');
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
 const dispatch=useDispatch()
 const formaData1=new FormData()
 formaData1.append('file',name)
-
-
 
 const add=async()=>{
   const formaData=new FormData()
@@ -33,13 +30,8 @@ const add=async()=>{
   { 
     console.log(res)
     const data={name,image:res.data.url,price,rating,description}
-    dispatch(addProduct(data))})}
- 
-
-    
-    
+    dispatch(addProduct(data))})} 
     handleClose()
-
 }
   return (
     <>

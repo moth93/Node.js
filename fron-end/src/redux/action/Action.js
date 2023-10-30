@@ -3,7 +3,7 @@ import { GET } from "../action-type/action-type"
 
  export const getProduct = ()=>async(dispatch)=>{
     try {
-        const res=await axios.get("/product/get")
+        const res=await axios.get("/product/get") 
         dispatch({type:GET,payload:res.data.GETProduct})
          
     } catch (error) {

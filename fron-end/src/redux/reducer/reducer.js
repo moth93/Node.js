@@ -2,7 +2,7 @@ import { GET } from "../action-type/action-type"
 
 const initialState =[]
 
- const reducerProduct = (state = initialState, { type, payload }) => {
+ export const reducerProduct = (state = initialState, { type, payload }) => {
   switch (type) {
 
   case GET:
@@ -12,4 +12,4 @@ const initialState =[]
     return state
   }
 }
-export default reducerProduct
+
